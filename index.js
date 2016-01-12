@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 var assert = require('assert');
 
 var exec = require('child_process').exec;
-exec("start cmd /k mongod --dbpath=c:/data/db");
+//exec("start cmd /k mongod --dbpath=c:/data/db");
 
 var mongo = require('mongodb'),
   Server = mongo.Server,
@@ -32,9 +32,9 @@ io.on('connection', function(socket){
         collection.find().toArray(function(err, docs) {
           socket.emit("schedule", docs);
           db.close();
-        });    
+        });
     }
-  });   
+  });
 });
 
 app.get('/', function (req, res) {
@@ -44,7 +44,7 @@ app.get('/', function (req, res) {
         collection.find().toArray(function(err, docs) {
           res.json(docs);
           db.close();
-        });    
+        });
     }
   });*/
   res.sendfile('index.html');
@@ -60,9 +60,8 @@ app.post('/', function (req, res) {
           io.emit("newData", req.body);
           var status = {status:1};
           res.json(status);
-        }); 
+        });
     }
   });
-  
-});
 
+});

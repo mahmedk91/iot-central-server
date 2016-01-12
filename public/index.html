@@ -2,15 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
+    <title>REAL TIME TRANSPORT BUS INFO</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
     <script src="https://cdn.socket.io/socket.io-1.4.3.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
   <body>
-        <table id="contents">
-            
+  </br></br>
+    <h3><u> REAL TIME BUS TRANSPORT SYSTEM </u></h3>
+  </br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th> BUS NUMBER </th>
+                <th> CURRENT STOP </th>
+                <th> NEXT STOP </th>
+                <th> TIME TO NEXT STOP </th>
+              </tr>
+            </thead>
+            <tbody id="contents"></tbody>
         </table>
   </body>
 </html>
