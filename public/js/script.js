@@ -6,5 +6,7 @@ socket.on('schedule', function(schedule){
 });
 
 socket.on('newData', function(newData){
+    alert(newData);
+    console.log(newData);
     $( "#contents" ).append( "<tr><td>" + newData.uid + "</td></tr>'" );
 });
