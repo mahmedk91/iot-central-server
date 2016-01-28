@@ -12,19 +12,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </head>
   <body>
-  </br></br>
-    <h3><u> REAL TIME BUS TRANSPORT SYSTEM </u></h3>
-  </br>
-        <table class="table">
-            <thead>
-              <tr>
-                <th> BUS NUMBER </th>
-                <th> CURRENT STOP </th>
-                <th> NEXT STOP </th>
-                <th> TIME TO NEXT STOP </th>
-              </tr>
-            </thead>
-            <tbody id="contents"></tbody>
-        </table>
+    <div class="jumbotron">
+      <h2 align="center">REAL TIME BUS TRANSPORT SYSTEM</h2>
+    </div>
+    <div class="container" id="bus-list">
+      
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th> BUS NUMBER </th>
+              <th> ARRIVAL TIME </th>
+              <th> CURRENT STOP </th>
+              <th> NEXT STOP </th>
+              <th> DISTANCE TO NEXT STOP</th>
+              <th> TIME TO NEXT STOP </th>
+            </tr>
+          </thead>
+          <tbody id="contents"></tbody>
+      </table>
+    </div>
   </body>
 </html>
