@@ -17,7 +17,15 @@ socket.on('schedule', function(schedule){
 
 socket.on('newData', function(newData){
     buses.push(newData);
-    $( "#contents" ).append( "<tr><td>" + newData.bus + "</td></tr>" );
+    var id = newData['_id'];
+    $( "#contents" ).append("<tr style='cursor:pointer;' onclick='showDetails(\""+id+"\");' data-toggle='modal' data-target='#"+id+"'>"
+        +"<td>"+newData.bus+"</td>"
+        +"<td>"+newData.requestTime+"</td>"
+        +"<td>"+newData.currentStop+"</td>"
+        +"<td>"+newData.nextStop+"</td>"
+        +"<td>"+newData.distance+"</td>"
+        +"<td>"+newData.expectedTime+"</td>"
+        +"</tr>");
 });
 
 function showDetails(id){
