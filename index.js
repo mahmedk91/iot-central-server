@@ -26,9 +26,17 @@ io.on('connection', function(socket){
    console.log("connected!!");
    MongoClient.connect(url, function(err, db) {
     if(!err) {
+        //For admin tab
         var collection = db.collection("data");
+
         collection.find().toArray(function(err, docs) {
           socket.emit("schedule", docs);
+        });
+
+        //For user tab
+        //console.log("Test is: ", db.data.find().sort({ "_id": -1 }).limit(1));
+        collection.find().sort({ "_id": -1 }).limit(1).toArray(function(err, docs) {
+          socket.emit("scheduleuser", docs);
           db.close();
         });
     }

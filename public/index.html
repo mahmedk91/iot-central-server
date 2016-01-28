@@ -15,21 +15,62 @@
     <div class="jumbotron">
       <h2 align="center">REAL TIME BUS TRANSPORT SYSTEM</h2>
     </div>
+
+    <div class="container">
+    <ul class="nav nav-tabs">
+       <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
+       <li><a data-toggle="tab" href="#user">User</a></li>
+     </ul>
+     <br>
     <div class="container" id="bus-list">
-      
-      <table class="table table-hover">
-          <thead>
-            <tr>
-              <th> BUS NUMBER </th>
-              <th> ARRIVAL TIME </th>
-              <th> CURRENT STOP </th>
-              <th> NEXT STOP </th>
-              <th> DISTANCE TO NEXT STOP</th>
-              <th> TIME TO NEXT STOP </th>
-            </tr>
-          </thead>
-          <tbody id="contents"></tbody>
-      </table>
+      <div class="tab-content">
+        <div id="admin" class="tab-pane fade in active">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th> BUS NUMBER </th>
+                    <th> ARRIVAL TIME </th>
+                    <th> CURRENT STOP </th>
+                    <th> NEXT STOP </th>
+                    <th> DISTANCE TO NEXT STOP</th>
+                    <th> TIME TO NEXT STOP </th>
+                  </tr>
+                </thead>
+              <tbody id="contents"></tbody>
+            </table>
+            </div>
+            <div id="user" class="tab-pane fade">
+              <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th> BUS NUMBER </th>
+                  <th> ARRIVAL TIME </th>
+                  <th> CURRENT STOP </th>
+                  <th> NEXT STOP </th>
+                  <th> DISTANCE TO NEXT STOP</th>
+                  <th> TIME TO NEXT STOP </th>
+                </tr>
+              </thead>
+              <tbody id="usercontents"></tbody>
+            </table>
+          </div>
+          </div>
     </div>
+
+    <style>
+          .footer {
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 50px;
+      }
+    </style>
+    <div class="footer">
+      <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-copyright-mark"></span> Mohd Ahmed Khan, Saion Chatterjee
+      </button>
+    </div>
+  </div>
   </body>
 </html>

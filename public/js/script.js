@@ -12,7 +12,23 @@ socket.on('schedule', function(schedule){
         +"<td>"+item.distance+"</td>"
         +"<td>"+item.expectedTime+"</td>"
         +"</tr>");
+      });
     });
+
+    //For user tab contents
+socket.on('scheduleuser', function(scheduleuser){
+    //schedule.forEach(function(item, index){
+      var id = scheduleuser['_id'];
+    $( "#usercontents" ).append("<tr style='cursor:pointer;' onclick='showDetails(\""+id+"\");' data-toggle='modal' data-target='#"+id+"'>"
+      +"<td>"+scheduleuser.bus+"</td>"
+      +"<td>"+scheduleuser.requestTime+"</td>"
+      +"<td>"+scheduleuser.currentStop+"</td>"
+      +"<td>"+scheduleuser.nextStop+"</td>"
+      +"<td>"+scheduleuser.distance+"</td>"
+      +"<td>"+scheduleuser.expectedTime+"</td>"
+      +"</tr>");
+      $("#usercontents").append("<tr><td>newtestnow</td></tr>");
+  //});
 });
 
 socket.on('newData', function(newData){
