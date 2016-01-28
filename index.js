@@ -1,5 +1,6 @@
 var express = require('express');
 var app = require('express')();
+app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,10 +13,9 @@ var exec = require('child_process').exec;
 
 var rest = require('restler');
 
-var server = app.listen(3001, function () {
-  console.log('Listening on port 3001');
+var server = app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
-
 
 var http = require('http').Server(app);
 var io = require('socket.io').listen(server);
