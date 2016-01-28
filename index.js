@@ -4,18 +4,13 @@ app.use(express.static(__dirname + '/public'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 
 var exec = require('child_process').exec;
 //exec("start cmd /k mongod --dbpath=c:/data/db");
 
 var rest = require('restler');
-
-var mongo = require('mongodb'),
-  Server = mongo.Server,
-  Db = mongo.Db;
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-var db = new Db('iotproject', server);
 
 var server = app.listen(3001, function () {
   console.log('Listening on port 3001');
@@ -25,10 +20,11 @@ var server = app.listen(3001, function () {
 var http = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
+var url = 'mongodb://root:root@ds033734.mongolab.com:33734/iot-project';
 
 io.on('connection', function(socket){
    console.log("connected!!");
-   db.open(function(err, db) {
+   MongoClient.connect(url, function(err, db) {
     if(!err) {
         var collection = db.collection("data");
         collection.find().toArray(function(err, docs) {
@@ -45,12 +41,13 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
   var data = req.body;
-  db.open(function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if(!err) {
       var buses = db.collection("buses");
       var stops = db.collection("stops");
       var route = db.collection("route");
       var dataCollection = db.collection("data");
+      //console.log(data);
       rest.get("http://api.openweathermap.org/data/2.5/weather?lat="+data.lat+"&lon="+data.long+"&appid=ac595deec802a928a67876607c0bdf6d").on('complete', function(weather) {
         buses.find({"tag":parseInt(data.uid)}).toArray(function(err, docs){
           data.bus=docs[0].bus;
