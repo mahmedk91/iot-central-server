@@ -17,6 +17,7 @@ socket.on('schedule', function(schedule){
 
 socket.on('newData', function(newData){
     buses.push(newData);
+    console.log(newData);
     var id = newData['_id'];
     $( "#contents" ).append("<tr style='cursor:pointer;' onclick='showDetails(\""+id+"\");' data-toggle='modal' data-target='#"+id+"'>"
         +"<td>"+newData.bus+"</td>"
@@ -39,6 +40,7 @@ function showDetails(id){
     +"<button type='button' class='close' data-dismiss='modal'>&times;</button>"
     +"<h4 class='modal-title'>Entry Details</h4>"
     +"</div><div class='modal-body'>"
+    +"<b>Bus class</b>: "+bus[0].class+"<br>"
     +"<b>Entry Time</b>: "+bus[0].responseTime+"<br>"
     +"<b>Time Zone</b>: "+bus[0].timeZoneId+"<br>"
     +"<b>Stop Address</b>: "+bus[0].address+"<br>"
@@ -49,6 +51,7 @@ function showDetails(id){
     +"<b>Latitude</b>: "+bus[0].lat+"<br>"
     +"<b>Longitude</b>: "+bus[0].long+"<br>"
     +"<b>Delay by chip</b>: "+bus[0].delay+"<br>"
+    +"<b>Weather</b>: "+bus[0].weather+"<br>"
     +"<b>Average Speed till next stop</b>: "+bus[0].nextAvgSpeed+" kmph<br>"
     +"</div>"
     +"<div class='modal-footer'>"

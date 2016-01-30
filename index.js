@@ -51,15 +51,17 @@ app.post('/', function (req, res) {
       rest.get("http://api.openweathermap.org/data/2.5/weather?lat="+data.lat+"&lon="+data.long+"&appid=ac595deec802a928a67876607c0bdf6d").on('complete', function(weather) {
         buses.find({"tag":parseInt(data.uid)}).toArray(function(err, docs){
           data.bus=docs[0].bus;
+          data.class=docs[0].class;
+          data.weather=weather.weather[0].main;
           if (docs[0].class=="red-line") {
             data.nextAvgSpeed=60;
           } else if (docs[0].class=="blue-line") {
             data.nextAvgSpeed=50;
           }
           if(weather.weather[0].main.indexOf("Rain") != -1){
-          data.nextAvgSpeed=30;
+            data.nextAvgSpeed=30;
           }
-          if (weather.weather[0].main.indexOf("Snow") != -1) {
+          if (weather.weather[0].main.indexOf("Snow") != -1 || weather.weather[0].main.indexOf("Fog") != -1) {
             data.nextAvgSpeed=20;
           }
           stops.find({"sensor": data.sensorid}).toArray(function(err, docs1){
